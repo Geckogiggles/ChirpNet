@@ -22,8 +22,7 @@ const reactionSchema = new Schema(
         },
         createdAt: {
             type: Date,
-            default: Date.now,
-            timestamps: true,
+            default: Date.now(),
         },
     },
     {
@@ -36,15 +35,6 @@ const reactionSchema = new Schema(
     }
 );
 
-// Create a virtual property `fullName` that gets and sets the user's full name
-userSchema
-    .virtual('friendCount')
-    // Getter
-    .get(function () {
-        return `${this.friends.length}`;
-    })
 
-// Initialize our User model
-const User = model('user', userSchema);
 
-module.exports = User;
+module.exports = reactionSchema;
