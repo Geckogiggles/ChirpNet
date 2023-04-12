@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const reactionSchema = require("../Schema/Reaction");
+const reactionSchema = require("./Reaction");
 
 // Schema to create User model
 const thoughtSchema = new Schema(
@@ -7,21 +7,17 @@ const thoughtSchema = new Schema(
         thoughtText: {
             type: String,
             required: true,
-            validate: {
-                max: 280,
-                min: 1,
-            }
+            maxlength: 280,
+            minlength: 1,
         },
         createdAt: {
             type: Date,
             default: Date.now(),
         },
-        thoughts: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Thought',
-            },
-        ],
+        username: {
+            type: String,
+            required: true,
+        },
         reactions: [reactionSchema],
         //reaction is like a blueprint to create the object
     },

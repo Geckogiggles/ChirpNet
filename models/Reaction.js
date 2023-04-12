@@ -1,19 +1,17 @@
-const { Schema, model } = require('mongoose');
+const { Schema, Types } = require('mongoose');
 
 
-// Schema to create User model
+// Schema to create reaction Schema
 const reactionSchema = new Schema(
     {
         reactionId: {
             type: Schema.Types.ObjectId,
-            default: Schema.Types.ObjectId,
+            default: () => new Types.ObjectId()
         },
         reactionBody: {
             type: String,
             required: [true, "Text required"],
-            validate: {
-                max: 280
-            }
+            maxlength: 280
         },
         username:
         {
